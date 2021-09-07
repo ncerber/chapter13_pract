@@ -10,15 +10,15 @@ public class CalcSimpleDigit extends Thread {
     }
 
     @Override
-    public void run() {
+    public void run()  {
         boolean isSimple = true;
         for (int i = 2; i < calcDigit; i++) {
-            try {
-                if (calcDigit % i == 0) {
-                    isSimple = false;
-                    break;
-                }
-            } catch (InterruptedException e) {
+            if(isInterrupted()){
+                isSimple = false;
+                break;
+            }
+            if (calcDigit % i == 0) {
+                isSimple = false;
                 break;
             }
         }
